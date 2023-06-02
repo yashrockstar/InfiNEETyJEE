@@ -6,7 +6,293 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link rel="stylesheet" href="/index.css" />
+    <style>
+      @font-face {
+        font-family: "Reforma 1918";
+      }
+      @font-face {
+        font-family: "Poppins";
+      }
+      html {
+        font-size: 6.9444444444vw;
+      }
+
+      :root {
+        --main-font: "Reforma 1918", sans-serif;
+        --sub-font: "Poppins", sans-serif;
+        --color-black: #e5e5e5;
+        --color-white: #fff;
+
+        --font-size-h1: 1.41rem;
+        --font-size-desc-1: 0.16rem;
+        --font-size-desc-2: 0.16rem;
+        --font-size-header-text-1: 0.14rem;
+        --font-size-btn-1: 0.18rem;
+        --font-size-btn-2: 0.18rem;
+
+        --line-height-h1: 1.26rem;
+        --line-height-desc-1: 0.16rem;
+        --line-height-desc-2: 0.16rem;
+        --line-height-header-text-1: 0.14rem;
+        --line-height-btn-1: 0.18rem;
+        --line-height-btn-2: 0.18rem;
+      }
+
+      .title-h1 {
+        font-size: var(--font-size-h1);
+        line-height: var(--line-height-h1);
+        font-weight: 700;
+        color: var(--color-white);
+        font-family: var(--main-font);
+      }
+      .desc-1 {
+        font-size: var(--font-size-desc-1);
+        line-height: var(--line-height-desc-1);
+        font-weight: 500;
+        color: var(--color-white);
+        font-family: var(--sub-font);
+      }
+      .desc-2 {
+        font-size: var(--font-size-desc-2);
+        line-height: var(--line-height-desc-2);
+        font-weight: 600;
+        color: var(--color-white);
+        font-family: var(--sub-font);
+      }
+      .header-text-1 {
+        font-size: var(--font-size-header-text-1);
+        line-height: var(--line-height-header-text-1);
+        font-weight: 500;
+        color: var(--color-white);
+        font-family: var(--sub-font);
+      }
+      .btn-1 {
+        font-size: var(--font-size-btn-2);
+        line-height: var(--line-height-btn-2);
+        font-weight: 500;
+        color: var(--color-white);
+        font-family: var(--sub-font);
+      }
+      .btn-2 {
+        font-size: var(--font-size-btn-1);
+        line-height: var(--line-height-btn-1);
+        font-weight: 600;
+        color: var(--color-white);
+        font-family: var(--sub-font);
+      }
+
+      .neet {
+        color: #f38c3d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      img,
+      svg,
+      video {
+        display: block;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      img {
+        display: block;
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+
+      /* extra long transition to hide blue autofill background */
+      input:-webkit-autofill,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:focus {
+        -webkit-transition: background-color 100000000000000000000000000000s 0s,
+          color 100000000000000000000000000000s 0s;
+        transition: background-color 100000000000000000000000000000s 0s,
+          color 100000000000000000000000000000s 0s;
+      }
+
+      /* Remove Safari autofill*/
+      input::-webkit-contacts-auto-fill-button {
+        visibility: hidden;
+        display: none !important;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        /* remove autofill blue background */
+        box-shadow: inset 0 0 0 150px rgba(255, 255, 255, 0) !important;
+        -webkit-box-shadow: inset 0 0 0 150px rgba(255, 255, 255, 0) !important;
+        -webkit-text-fill-color: currentColor !important;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        background-color: transparent;
+      }
+
+      body {
+        background: var(--color-black);
+        position: relative;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 0.32rem;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 0.9rem;
+        padding: 0 0.32rem;
+        .flex-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          .logo-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .header-menu {
+          display: flex;
+          align-items: center;
+          list-style-type: none;
+          &__item {
+            &:not(:last-child) {
+              margin-right: 0.37rem;
+            }
+            cursor: pointer;
+          }
+        }
+      }
+
+      .hero {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        .container {
+          display: flex;
+          align-items: center;
+        }
+        .hero-video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: -1;
+        }
+        .title-block {
+          padding-left: 1.48rem;
+          position: relative;
+          .title-h1 {
+            text-transform: uppercase;
+            .title-row {
+              display: flex;
+            }
+            .title-charts-cont {
+              display: flex;
+              overflow: hidden;
+            }
+            .title-row-2 {
+              padding-left: 0.83rem;
+            }
+            #ry {
+              margin-right: 0.37rem;
+            }
+            #tells {
+              margin-right: 0.15rem;
+            }
+            #a {
+              margin-right: 0.15rem;
+            }
+          }
+          .first-desc {
+            position: absolute;
+            top: -0.5rem;
+            right: 3.7rem;
+            overflow: hidden;
+            display: flex;
+          }
+          .second-desc {
+            position: absolute;
+            bottom: -1rem;
+            left: 4.85rem;
+            overflow: hidden;
+            display: flex;
+          }
+        }
+        .copyright {
+          position: absolute;
+          bottom: 0.32rem;
+          left: 0.32rem;
+          overflow: hidden;
+          display: flex;
+        }
+        .scroll-to {
+          position: absolute;
+          bottom: 0.32rem;
+          left: 7.75rem;
+          width: 1.48rem;
+          text-transform: uppercase;
+          display: flex;
+          flex-direction: column;
+          &__row {
+            overflow: hidden;
+            display: flex;
+          }
+        }
+        .book-btn {
+          position: absolute;
+          bottom: 0.32rem;
+          right: 0.32rem;
+          width: 1.7rem;
+          height: 1.7rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &__circle {
+            width: 1.7rem;
+            height: 1.7rem;
+            border: 1px solid var(--color-white);
+            border-radius: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+          .btn-text {
+            width: 1.28rem;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+          }
+        }
+      }
+    </style>
     <title>title</title>
   </head>
   <body>
@@ -14,7 +300,8 @@
       <div class="flex-wrapper">
         <div class="logo-wrap">
           <div class="btn-2" style="color: #151b2a">
-            INF<i class="fas fa-pencil-alt"></i><i class="neet">NEET</i>Y <i class="neet">∞</i>
+            INF<i class="fas fa-pencil-alt"></i><i class="neet">NEET</i>Y
+            <i class="neet">∞</i>
             <span class="neet">JEE</span>
           </div>
         </div>
@@ -32,15 +319,25 @@
         <div class="title-block">
           <div class="title-h1">
             <div class="title-row title-row-1">
-                <div class="title-charts-cont" style="color: #151b2a;" id="we"><span>We</span></div>
-                <div class="title-charts-cont neet" id="he"><span>he</span></div>
-                <div class="title-charts-cont neet" id="lp"><span>lp</span></div>
-                <div class="title-charts-cont" style="color: #151b2a;"  id="yo"><span>you</span></div>
+              <div class="title-charts-cont" style="color: #151b2a" id="we">
+                <span>We</span>
               </div>
-              <div class="title-row title-row-2">
-                <div class="title-charts-cont" style="color: #151b2a;"  id="go"><span>go</span></div>
-                <div class="title-charts-cont neet" id="limit"><span>limit</span></div>
-                <div class="title-charts-cont neet" id="less"><span>less</span></div>
+              <div class="title-charts-cont neet" id="he"><span>he</span></div>
+              <div class="title-charts-cont neet" id="lp"><span>lp</span></div>
+              <div class="title-charts-cont" style="color: #151b2a" id="yo">
+                <span>you</span>
+              </div>
+            </div>
+            <div class="title-row title-row-2">
+              <div class="title-charts-cont" style="color: #151b2a" id="go">
+                <span>go</span>
+              </div>
+              <div class="title-charts-cont neet" id="limit">
+                <span>limit</span>
+              </div>
+              <div class="title-charts-cont neet" id="less">
+                <span>less</span>
+              </div>
             </div>
           </div>
           <div class="first-desc"></div>
@@ -48,7 +345,11 @@
         </div>
 
         <div class="copyright">
-          <span class="desc-1"><strong style="color: #151b2a;">2023 All RIGHTS RESERVED ©</strong></span>
+          <span class="desc-1"
+            ><strong style="color: #151b2a"
+              >2023 All RIGHTS RESERVED ©</strong
+            ></span
+          >
         </div>
 
         <div class="scroll-to">
@@ -64,6 +365,248 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CustomEase.min.js"></script>
 
-    <script src="./index.js"></script>
+    <script>
+      gsap.registerPlugin(CustomEase);
+
+      const customEaseIn = CustomEase.create(
+        "custom-ease-in",
+        "0.52, 0.00, 0.48, 1.00"
+      );
+      const fourtyFrames = 1.3333333;
+      const fiftyFrames = 1.66666;
+      const twoFrames = 0.666666;
+      const fourFrames = 0.133333;
+      const sixFrames = 0.2;
+
+      const video = document.querySelector(".hero-video");
+      const header = document.querySelector(".header");
+      const book = document.querySelector(".first-desc span");
+      const open = document.querySelector(".second-desc span");
+      const copy = document.querySelector(".copyright span");
+      const scrollToRows = document.querySelectorAll(
+        ".scroll-to .scroll-to__row span"
+      );
+      const btnCircle = document.querySelector(".book-btn__circle");
+      const btnText = document.querySelector(".btn-text span");
+      const we = document.querySelector("#eve span");
+      const he = document.querySelector("#ry span");
+      const lp = document.querySelector("#fo span");
+      const yo = document.querySelector("#yo span");
+      const u = document.querySelector("#u span");
+      const go = document.querySelector("#go span");
+      const limit = document.querySelector("#limit span");
+      const less = document.querySelector("#less span");
+
+      const showElements = () => {
+        const timeline = gsap.timeline();
+        timeline
+          .fromTo(
+            btnCircle,
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: fourtyFrames, ease: customEaseIn },
+            0
+          )
+          .fromTo(
+            btnCircle,
+            { scale: 0.417 },
+            { scale: 1, duration: fourtyFrames, ease: customEaseIn },
+            0
+          )
+          .fromTo(
+            header,
+            { y: "-0.5rem" },
+            { y: "0rem", duration: fourtyFrames, ease: customEaseIn },
+            0
+          )
+          .fromTo(
+            we,
+            { x: "2.7rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            0
+          )
+          .fromTo(
+            book,
+            { y: "0.5rem" },
+            { y: "0rem", duration: fourtyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            lp,
+            { x: "2.1rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            go,
+            { x: "-1.2rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            less,
+            { x: "-3.2rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            open,
+            { y: "0.3rem" },
+            { y: "0rem", duration: fourtyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            btnText,
+            { y: "0.4rem" },
+            { y: "0rem", duration: fourtyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            he,
+            { x: "-2rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            yo,
+            { x: "-3.1rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            u,
+            { x: "4.3rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            limit,
+            { x: "1.9rem" },
+            { x: "0rem", duration: fiftyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            copy,
+            { y: "0.4rem" },
+            { y: "0rem", duration: fourtyFrames, ease: customEaseIn },
+            sixFrames
+          )
+          .fromTo(
+            scrollToRows,
+            { y: "0.5rem" },
+            { y: "0rem", duration: fourtyFrames, ease: customEaseIn },
+            sixFrames
+          );
+
+        return timeline;
+      };
+
+      const hideElements = () => {
+        const timeline = gsap.timeline();
+
+        timeline
+          .fromTo(
+            copy,
+            { y: "0rem" },
+            { y: "0.4rem", duration: fourtyFrames, ease: customEaseIn },
+            0
+          )
+          .fromTo(
+            scrollToRows,
+            { y: "0rem" },
+            { y: "0.5rem", duration: fourtyFrames, ease: customEaseIn },
+            0
+          )
+          .fromTo(
+            open,
+            { y: "0rem" },
+            { y: "0.3rem", duration: fourtyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            btnText,
+            { y: "0rem" },
+            { y: "0.4rem", duration: fourtyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            he,
+            { x: "0rem" },
+            { x: "-2rem", duration: fiftyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            yo,
+            { x: "0rem" },
+            { x: "-3.1rem", duration: fiftyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            u,
+            { x: "0rem" },
+            { x: "4.3rem", duration: fiftyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            limit,
+            { x: "0rem" },
+            { x: "1.9rem", duration: fiftyFrames, ease: customEaseIn },
+            twoFrames
+          )
+          .fromTo(
+            book,
+            { y: "0rem" },
+            { y: "0.5rem", duration: fourtyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            lp,
+            { x: "0rem" },
+            { x: "2.1rem", duration: fiftyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            go,
+            { x: "0rem" },
+            { x: "-1.2rem", duration: fiftyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            less,
+            { x: "0rem" },
+            { x: "-3.2rem", duration: fiftyFrames, ease: customEaseIn },
+            fourFrames
+          )
+          .fromTo(
+            btnCircle,
+            { autoAlpha: 1 },
+            { autoAlpha: 0, duration: fourtyFrames, ease: customEaseIn },
+            sixFrames
+          )
+          .fromTo(
+            btnCircle,
+            { scale: 1 },
+            { scale: 0.417, duration: fourtyFrames, ease: customEaseIn },
+            sixFrames
+          )
+          .fromTo(
+            header,
+            { y: "0rem" },
+            { y: "-100%", duration: fourtyFrames, ease: customEaseIn },
+            sixFrames
+          )
+          .fromTo(
+            we,
+            { x: "0rem" },
+            { x: "2.7rem", duration: fiftyFrames, ease: customEaseIn },
+            sixFrames
+          );
+
+        return timeline;
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        showElements();
+      });
+    </script>
   </body>
 </html>
